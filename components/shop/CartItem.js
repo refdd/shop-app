@@ -7,7 +7,7 @@ import {
   Platform,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-function CartItem({ onRemove, quanity, title, amount }) {
+function CartItem({ onRemove, quanity, title, amount, deleteAble }) {
   return (
     <View style={styles.CartItem}>
       <View style={styles.itemData}>
@@ -16,13 +16,15 @@ function CartItem({ onRemove, quanity, title, amount }) {
       </View>
       <View style={styles.itemData}>
         <Text style={styles.amount}> {amount.toFixed(2)} </Text>
-        <TouchableOpacity onPress={onRemove} style={styles.deletebutton}>
-          <Ionicons
-            name={Platform.OS === "android" ? "md-trash" : "ios-trash"}
-            color="red"
-            size={23}
-          />
-        </TouchableOpacity>
+        {deleteAble && (
+          <TouchableOpacity onPress={onRemove} style={styles.deletebutton}>
+            <Ionicons
+              name={Platform.OS === "android" ? "md-trash" : "ios-trash"}
+              color="red"
+              size={23}
+            />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );

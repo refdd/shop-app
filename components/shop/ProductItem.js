@@ -2,11 +2,11 @@ import React from 'react'
 import { View , StyleSheet, Image, Text, Button , TouchableOpacity ,TouchableNativeFeedback } from 'react-native'
 import Color from '../../constants/Color'
 
-function ProductItem({prise , UrlImage , Title , onViewDetail , onAddtoCart }) {
+function ProductItem({prise , UrlImage , Title , onSlected , onAddtoCart ,children }) {
   return (
       <View style={styles.Product}>
 
-        <TouchableNativeFeedback onPress={onViewDetail} useForeground>
+        <TouchableNativeFeedback onPress={onSlected} useForeground>
        <View>
         
 <View style={styles.imageContainer}>
@@ -18,8 +18,7 @@ function ProductItem({prise , UrlImage , Title , onViewDetail , onAddtoCart }) {
         <Text style={styles.price} > ${prise.toFixed(2)}</Text>
         </View>
         <View style={styles.action}>
-            <Button color={Color.primary} title='view Details'  onPress={onViewDetail} />
-            <Button color={Color.primary} title='To Cart '  onPress={onAddtoCart}/>
+           {children}
         </View>
        </View>
     </TouchableNativeFeedback>
@@ -54,7 +53,7 @@ const styles= StyleSheet.create({
     ,
     containerContent:{
         alignItems: "center",
-        height:"15%",
+        height:"17%",
         padding:10
     }
     ,
@@ -70,7 +69,7 @@ const styles= StyleSheet.create({
       flexDirection:"row",
       justifyContent:"space-between",
        alignItems:"center",
-       height:"25%",
+       height:"23%",
        paddingHorizontal:20
     }
 })
